@@ -22,10 +22,9 @@ app.use(cors());
 // routes
 app.get('/', handlerFunctions.handleGetHome);
 
-
 app.get('/about', handlerFunctions.handleGetAbout);
 
-
+app.get('/movies', handlerFunctions.handleGetMovies);
 
 
 
