@@ -1,10 +1,13 @@
 'use strict';
 
+
 // imports
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+// const { handleGetHome, handleGetAbout } = require('./routes.js');
+const handlerFunctions = require('./routes.js');
 
 // globals
 const PORT = process.env.PORT;
@@ -17,11 +20,11 @@ app.use(cors());
 
 
 // routes
-app.get('/', (request, response) => {
-  console.log('You called? I am a GET at home route');
-  response.status(200).send('Hi hello haha');
+app.get('/', handlerFunctions.handleGetHome);
 
-});
+app.get('/about', handlerFunctions.handleGetAbout);
+
+app.get('/movies', handlerFunctions.handleGetMovies);
 
 
 
