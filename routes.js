@@ -1,3 +1,4 @@
+const axios = require('axios');
 
 // handler functions
 function handleGetAbout(req, res) {
@@ -10,9 +11,14 @@ function handleGetHome(request, response) {
 }
 
 
-// https://api.themoviedb.org/3/search/company?api_key=c2e3548add0404c53d3495c808f1e0f4&query=city&page=1
-function handleGetMovies(req, res) {
-  res.send('Coming soon');
+async function handleGetMovies(req, res) {
+  const { searchQuery } = req.query;
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${searchQuery}&page=1`
+  const moviesResponse = await axios.get(url);
+  
+
+
+  res.send(moviesResponse.data.results);
 }
 
 
